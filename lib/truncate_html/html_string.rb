@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module TruncateHtml
   class HtmlString < String
 
@@ -8,7 +10,7 @@ module TruncateHtml
     end
 
     def html_tokens
-      scan(/(?:<script.*>.*<\/script>)+|<\/?[^>]+>|[\w\|`~!@#\$%^&*\(\)\-_\+=\[\]{}:;'",\.\/?]+|\s+/).map do
+      scan(/(?:<script.*>.*<\/script>)+|<\/?[^>]+>|[[[:alpha:]][0-9]\|`~!@#\$%^&*\(\)\-_\+=\[\]{}:;“”‘’'²³§",\.\/?]+|\s+|[[:punct:]]/).map do
         |token| token.gsub(
           #remove newline characters
             /\n/,''
